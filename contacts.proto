@@ -1,8 +1,17 @@
 syntax = "proto3";
 package contacts;
 
-message PeopleInfo
-{
+message PeopleInfo {
     string name = 1;
     int32 age = 2;
+    
+    message Phone {
+        string number = 1;
+    }
+
+    repeated Phone phone = 3;
+}
+
+message Contacts {
+    repeated PeopleInfo contact = 1;
 }
