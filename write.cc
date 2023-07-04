@@ -28,8 +28,24 @@ void AddPeopleInfo(contacts::PeopleInfo* peopleinfo)
         if (number.empty()) {
             break;
         }
-
-        contacts::PeopleInfo_Phone* phone = peopleinfo->add_phone();
+        contacts::PeopleInfo_Phone* phone = peopleinfo->add_phone();    
+        int type;
+    
+        cout << "请输入电话类型 (1.移动电话, 2.固定电话)：";
+        cin >> type;
+        cin.ignore(256, '\n');
+        switch (type)
+        {
+            case 1 :
+                phone->set_type(contacts::PeopleInfo_Phone_PhoneType :: PeopleInfo_Phone_PhoneType_MP);
+                break;
+            case 2 :
+                phone->set_type(contacts::PeopleInfo_Phone_PhoneType :: PeopleInfo_Phone_PhoneType_TEL);
+                break;
+            default :
+                cout << "选择有误" << endl;
+                break;
+        }
         phone->set_number(number);
     }
 

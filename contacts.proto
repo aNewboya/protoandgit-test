@@ -2,14 +2,19 @@ syntax = "proto3";
 package contacts;
 
 message PeopleInfo {
-    string name = 1;
-    int32 age = 2;
+    string name = 1;            // 姓名
+    int32 age = 2;              // 年龄
     
     message Phone {
-        string number = 1;
+        string number = 1;      // 电话号码      
+        enum PhoneType {
+            MP = 0;             // 移动电话
+            TEL = 1;            // 固定电话
+        }
+        PhoneType type = 2;     // 电话类型
     }
 
-    repeated Phone phone = 3;
+    repeated Phone phone = 3;   // 所有电话
 }
 
 message Contacts {
